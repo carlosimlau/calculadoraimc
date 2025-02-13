@@ -1,42 +1,73 @@
 package com.comunidadedevspace.imc
 
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 const val KEY_RESULT_IMC = "ResultActivity.KEY_IMC"
+
 class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+
         setContentView(R.layout.activity_result)
 
         val result = intent.getFloatExtra(KEY_RESULT_IMC, 0f)
 
-        val tvResult = findViewById<TextView>(R.id.tv_result)
+        val tvTitulo = findViewById<TextView>(R.id.tv_classificacao_label)
         val tvClassificacao = findViewById<TextView>(R.id.tv_classificacao)
-        tvResult.text = result.toString()
+        val tvDicaTitulo = findViewById<TextView>(R.id.tv_dica_titulo)
+        val tvDica = findViewById<TextView>(R.id.tv_dica1)
 
-        var classificacao: String = if (result < 18.5) {
-            "Magreza"
-        } else if (result  > 18.5f && result <= 24.9f) {
-            "Normal"
-        } else if (result > 25f && result <= 29.9f) {
-            "Sobrepeso"
-        } else if (result > 30f && result <= 39.9f) {
-            "Obesidade"
-        } else {
-            "Obesidade Grave"
+        tvTitulo.text = "A Classificação do IMC é:"
+
+        val (classificacao, cor, dica) = when {
+            result < 18.5 -> Triple(
+                "Magreza",
+                ContextCompat.getColor(this, R.color.azul),
+                "Aumente a ingestão calórica com alimentos saudáveis e faça acompanhamento médico."
+            )
+            result in 18.5..24.9 -> Triple(
+                "Normal",
+                ContextCompat.getColor(this, R.color.verde),
+                "Parabéns! Continue mantendo um estilo de vida equilibrado."
+            )
+            result in 25.0..29.9 -> Triple(
+                "Sobrepeso",
+                ContextCompat.getColor(this, R.color.amarelo),
+                "Tente equilibrar sua alimentação e aumentar a atividade física."
+            )
+            result in 30.0..39.9 -> Triple(
+                "Obesidade",
+                ContextCompat.getColor(this, R.color.laranja),
+                "Considere um plano alimentar saudável e consulte um especialista."
+            )
+            else -> Triple(
+                "Obesidade Grave",
+                ContextCompat.getColor(this, R.color.vermelho),
+                "Procure orientação médica para um tratamento adequado e saudável."
+            )
         }
 
         tvClassificacao.text = classificacao
+        tvClassificacao.setTextColor(cor)
+
+        tvDicaTitulo.text = "💡 Dica"
+        tvDica.text = dica
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(0, 0, 0, systemBars.bottom) // Remove espaço extra no topo
             insets
         }
     }
