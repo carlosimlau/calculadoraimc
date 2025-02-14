@@ -1,7 +1,6 @@
 package com.comunidadedevspace.imc
 
 import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +14,7 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
@@ -22,14 +22,17 @@ class ResultActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_result)
 
+
         val result = intent.getFloatExtra(KEY_RESULT_IMC, 0f)
 
-        val tvTitulo = findViewById<TextView>(R.id.tv_classificacao_label)
+        // Referências aos componentes do layout
+        val tvResult = findViewById<TextView>(R.id.tv_result)
         val tvClassificacao = findViewById<TextView>(R.id.tv_classificacao)
-        val tvDicaTitulo = findViewById<TextView>(R.id.tv_dica_titulo)
         val tvDica = findViewById<TextView>(R.id.tv_dica1)
 
-        tvTitulo.text = "A Classificação do IMC é:"
+
+        tvResult.text = String.format("%.2f", result)
+
 
         val (classificacao, cor, dica) = when {
             result < 18.5 -> Triple(
@@ -59,15 +62,15 @@ class ResultActivity : AppCompatActivity() {
             )
         }
 
+
         tvClassificacao.text = classificacao
         tvClassificacao.setTextColor(cor)
-
-        tvDicaTitulo.text = "💡 Dica"
         tvDica.text = dica
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(0, 0, 0, systemBars.bottom) // Remove espaço extra no topo
+            v.setPadding(0, 0, 0, systemBars.bottom)
             insets
         }
     }
