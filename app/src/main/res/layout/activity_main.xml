@@ -1,54 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/white"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:fontFamily="@font/quantico">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_calcular"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Calcular"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/gradiente_bg"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="18dp"
+            android:src="@drawable/ic_icon_header"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quantico"
+            android:gravity="center"
+            android:text="Calculadora IMC"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="Preencha os campos com seu peso e altura para calcular seu índice de massa corporal."
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:fontFamily="@font/quantico" />
+
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        app:hintEnabled="false"
+        app:boxBackgroundMode="none"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_peso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="#F0F0F0"
             android:hint="Digite seu peso ex: 70.200"
             android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            android:fontFamily="@font/quantico"
+            android:maxLength="6"
             app:layout_constraintTop_toTopOf="parent" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        app:hintEnabled="false"
+        app:boxBackgroundMode="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -57,9 +97,39 @@
             android:id="@+id/edt_altura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="#F0F0F0"
             android:hint="Digite sua altura ex: 1.70"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:fontFamily="@font/quantico"
+            android:maxLength="4" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ImageView
+        android:layout_width="415dp"
+        android:layout_height="384dp"
+        android:layout_gravity="center"
+        android:src="@drawable/healthy_lifestyle_rafiki"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/quantico"
+        android:padding="16dp"
+        android:text="Calcular"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

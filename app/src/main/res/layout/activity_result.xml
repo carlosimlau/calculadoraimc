@@ -4,30 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ResultActivity">
 
-    <TextView
-        android:id="@+id/tv_result"
-        android:textStyle="bold"
-        android:textSize="52sp"
-        android:maxLength="5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text= "23.66" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradiente_bg"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="18dp"
+            android:src="@drawable/ic_icon_header"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20sp"
+            android:fontFamily="@font/quantico"
+            android:gravity="center"
+            android:text="Calculadora IMC"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="@font/quantico"
+            android:gravity="center"
+            android:maxLength="5"
+            android:text="23.66"
+            android:textColor="@color/white"
+            android:textSize="52sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_classificacao_label"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="A Classificação do IMC é:" />
+        android:layout_marginTop="52dp"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/quantico"
+        android:gravity="center"
+        android:text="A Classificação do IMC é:"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tv_classificacao"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/quantico"
+        android:gravity="center"
+        android:textSize="32sp"
         android:textStyle="bold"
-        tools:text="Normal  " />
+        tools:text="Obesidade" />
+
+    <TextView
+        android:id="@+id/tv_dica_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/quantico"
+        android:gravity="center"
+        android:text="Dica 💡"
+        android:textColor="@color/primary_01"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_dica1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:fontFamily="@font/quantico"
+        android:gravity="center"
+        android:padding="18dp"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        tools:text="Considere um plano alimentar saudável e consulte um especialista." />
+
 </LinearLayout>
+

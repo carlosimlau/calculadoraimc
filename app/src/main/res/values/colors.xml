@@ -2,4 +2,18 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey">#5F5F5F</color>
+
+    <color name="primary_01">#6C63FF</color>
+    <color name="primary_02">#5b6acf</color>
+
+    <color name="buttonColor">#6C63FF</color>
+
+    <color name="azul">#137BCE</color>
+    <color name="verde">#0D8713</color>
+    <color name="amarelo">#AF8508</color>
+    <color name="laranja">#E68F0F</color>
+    <color name="vermelho">#AB1307</color>
+    <color name="cinza">#F0F0F0FF</color>
+
 </resources>
